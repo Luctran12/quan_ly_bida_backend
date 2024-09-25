@@ -6,6 +6,8 @@ import org.example.quan_ly_bida_backend.repository.BilliardTableRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BilliardTableService {
 
@@ -17,10 +19,16 @@ public class BilliardTableService {
         b.setType(billiardTable.getType());
         b.setCostPerHour(billiardTable.getCostPerHour());
 
-        return billiardTableRepo.save(b);
+        billiardTableRepo.save(b);
+        return b;
     }
 
-    public void deleteTable( int id) {
+    public int deleteTable( int id) {
         billiardTableRepo.deleteById(id);
+        return id;
+    }
+
+    public List<BilliardTable> getAllTable() {
+        return billiardTableRepo.findAll();
     }
 }
