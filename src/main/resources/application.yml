@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
 
-    url: "jdbc:mysql://localhost:3306/quanlybida"
+    url: "jdbc:mysql://root:GkjeQQklETjEWmQuVuPsNGUrCQhmiCrZ@autorack.proxy.rlwy.net:28464/railway"
     username: root
-    password: admin
+    password: GkjeQQklETjEWmQuVuPsNGUrCQhmiCrZ
   jpa:
     hibernate:
       ddl-auto: create-drop
