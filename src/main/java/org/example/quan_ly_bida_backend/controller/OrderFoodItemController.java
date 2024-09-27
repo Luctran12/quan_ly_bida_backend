@@ -1,5 +1,6 @@
 package org.example.quan_ly_bida_backend.controller;
 
+import org.example.quan_ly_bida_backend.dto.request.OrderFoodItemCreationRequest;
 import org.example.quan_ly_bida_backend.dto.request.response.ApiResponse;
 import org.example.quan_ly_bida_backend.model.OrderFoodItem;
 import org.example.quan_ly_bida_backend.service.OrderFoodItemService;
@@ -9,7 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController("/OrderFoodItem")
+@RestController
+@RequestMapping("/OrderFoodItem")
 public class OrderFoodItemController {
 
     @Autowired
@@ -24,10 +26,22 @@ public class OrderFoodItemController {
     }
 
     @PostMapping("/create")
-    public ApiResponse<OrderFoodItem> create(@RequestBody OrderFoodItem orderFoodItem) {
+    public ApiResponse<OrderFoodItem> create(@RequestBody OrderFoodItemCreationRequest orderFoodItem) {
         ApiResponse<OrderFoodItem>  response = new ApiResponse<>();
         response.setResult(orderFoodItemService.createOrderFoodItem(orderFoodItem));
         response.setMsg("create order food item success");
+        return response;
+    }
+
+    @GetMapping("/getAll")
+    public ApiResponse<List<OrderFoodItem>> getAll() {
+        ApiResponse<List<OrderFoodItem>>  response = new ApiResponse<>();
+        try{
+            response.setResult(orderFoodItemService.getAllOrderFoodItems());
+            response.setMsg("get all order food items success");
+        }catch(Exception e){
+            response.setMsg("get all order food items failed");
+        }
         return response;
     }
 }

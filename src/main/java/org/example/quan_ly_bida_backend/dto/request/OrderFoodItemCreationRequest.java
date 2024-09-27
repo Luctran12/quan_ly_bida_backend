@@ -11,9 +11,6 @@ import org.example.quan_ly_bida_backend.model.Order;
 @Data
 public class OrderFoodItemCreationRequest {
 
-    private Order order;
-
-
     private Food food;
 
 

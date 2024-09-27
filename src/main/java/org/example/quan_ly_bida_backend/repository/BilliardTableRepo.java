@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BilliardTableRepo extends JpaRepository<BilliardTable, Integer> {
-
+    public BilliardTable findByType(String type);
 }

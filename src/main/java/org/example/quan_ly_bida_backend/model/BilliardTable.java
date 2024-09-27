@@ -20,7 +20,7 @@ public class BilliardTable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "billiard_table_type")
+    @Column(name = "billiard_table_type",unique = true)
     private String type;
 
     @Column(name = "billiard_table_cost_per_hour")
