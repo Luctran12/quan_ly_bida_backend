@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: billiard-app
+    env: java
+    buildCommand: ./mvnw package -DskipTests
+    startCommand: java -jar target/your-app.jar
