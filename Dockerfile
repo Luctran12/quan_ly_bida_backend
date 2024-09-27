@@ -18,7 +18,7 @@ COPY src ./src
 RUN ./mvnw package -DskipTests
 
 # Chạy ứng dụng
-ENTRYPOINT ["java", "-jar", "/app/target/*.jar"]
+ENTRYPOINT ["java", "-jar", "/app/target/quan_ly_bida_backend-0.0.1-SNAPSHOT.jar"]
 
 # Expose cổng 8081
 EXPOSE 8081
