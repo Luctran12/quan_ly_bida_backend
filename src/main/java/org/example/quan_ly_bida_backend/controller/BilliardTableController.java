@@ -45,4 +45,12 @@ public class BilliardTableController {
         response.setMsg("getAllTable success");
         return response;
     }
+
+    @DeleteMapping("/deleteById/{id}")
+    public ApiResponse<Integer> deleteBilliardTableById(@PathVariable int id) {
+        ApiResponse<Integer> respone = new ApiResponse<>();
+        respone.setResult(billiardTableService.deleteTable(id));
+        respone.setMsg("delete success");
+        return respone;
+    }
 }

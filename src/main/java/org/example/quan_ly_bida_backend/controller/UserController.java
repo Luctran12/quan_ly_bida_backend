@@ -1,6 +1,8 @@
 package org.example.quan_ly_bida_backend.controller;
 
+import jakarta.validation.Valid;
 import org.example.quan_ly_bida_backend.dto.request.UserCreationRequest;
+import org.example.quan_ly_bida_backend.dto.request.UserLoginRequest;
 import org.example.quan_ly_bida_backend.dto.request.response.ApiResponse;
 import org.example.quan_ly_bida_backend.model.User;
 import org.example.quan_ly_bida_backend.service.UserService;
@@ -16,15 +18,15 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/login")
-    public ApiResponse<String> login(@RequestBody UserCreationRequest user) {
+    @PostMapping("/login")
+    public ApiResponse<String> login(@RequestBody @Valid UserLoginRequest user) {
         ApiResponse<String> response = new ApiResponse();
         if (userService.login(user)) {
             response.setCode(200);
             response.setMsg("login successfully");
             return response;
         }
-        response.setMsg("login failed");
+        response.setMsg("login failed, userName or password is incorrect");
         return response;
     }
 
@@ -37,7 +39,7 @@ public class UserController {
             response.setResult(userService.createUser(user));
             response.setMsg("create successfully");
         } catch (SQLIntegrityConstraintViolationException e) {
-            response.setMsg("duplicate data");
+            response.setMsg(e.getMessage());
             System.out.println(e.getMessage());
         }
         return response;
@@ -57,7 +59,14 @@ public class UserController {
     public ApiResponse<List<User>> getAllStaff() {
         ApiResponse<List<User>> response = new ApiResponse<>();
         response.setResult(userService.getAllUsersHaveRoleUser());
-        response.setMsg("getAllStaff successfully");
+        if(response.getResult().size() > 0) {
+            response.setCode(200);
+            response.setMsg("getAllStaff successfully");
+        }else{
+            response.setCode(500);
+            response.setMsg("getAllStaff failed");
+        }
+
         return response;
     }
 
@@ -65,7 +74,11 @@ public class UserController {
     public ApiResponse<User> getById(@PathVariable int id) {
         ApiResponse<User> response = new ApiResponse<>();
         response.setResult(userService.getUser(id));
-        response.setMsg("getById successfully");
+        if(response.getResult()!= null) {
+            response.setMsg("getById successfully");
+        }else{
+            response.setMsg("getById failed");
+        }
         return response;
     }
 }

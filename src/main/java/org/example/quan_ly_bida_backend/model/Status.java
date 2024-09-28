@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Date;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -25,15 +27,15 @@ public class Status {
 
     @Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
-    private Date startTime;
+    private LocalTime startTime;
 
     @Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
-    private Date endTime;
+    private LocalTime endTime;
 
     @Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
-    private Date totalTime;
+    private LocalTime totalTime;
 
 //    @OneToMany(mappedBy = "status",cascade = CascadeType.ALL)
 //    private Set<Order> orders = new HashSet<>();
@@ -45,4 +47,7 @@ public class Status {
 
     @Column(name = "total")
     private Double totalCost;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
+    private LocalDate date;
 }

@@ -44,4 +44,16 @@ public class OrderFoodItemController {
         }
         return response;
     }
+
+    @PostMapping("/add-OrderTable/{oderFoodItemId}/{orderTableId}")
+    public ApiResponse<OrderFoodItem> addOrderTable(@PathVariable int oderFoodItemId, @PathVariable Long orderTableId ) {
+        ApiResponse<OrderFoodItem>  response = new ApiResponse<>();
+        try{
+            response.setResult(orderFoodItemService.addOrderTable(oderFoodItemId, orderTableId));
+            response.setMsg("add order food item success");
+        }catch(Exception e){
+            response.setMsg("add order food item failed");
+        }
+        return response;
+    }
 }

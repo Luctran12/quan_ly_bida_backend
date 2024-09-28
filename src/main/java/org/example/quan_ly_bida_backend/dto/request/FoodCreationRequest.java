@@ -6,4 +6,5 @@ import lombok.Data;
 public class FoodCreationRequest {
     private String name;
     private Long cost;
+    private String imageUrl;
 }

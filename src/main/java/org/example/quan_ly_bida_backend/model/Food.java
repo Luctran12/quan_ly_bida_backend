@@ -20,4 +20,7 @@ public class Food {
 
     @Column(name = "cost")
     private Long cost;
+
+    @Column(name = "image_url")
+    private String imageUrl;
 }

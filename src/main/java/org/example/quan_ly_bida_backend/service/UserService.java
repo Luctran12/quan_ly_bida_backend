@@ -1,6 +1,7 @@
 package org.example.quan_ly_bida_backend.service;
 
 import org.example.quan_ly_bida_backend.dto.request.UserCreationRequest;
+import org.example.quan_ly_bida_backend.dto.request.UserLoginRequest;
 import org.example.quan_ly_bida_backend.model.EnumRole;
 import org.example.quan_ly_bida_backend.model.Role;
 import org.example.quan_ly_bida_backend.model.User;
@@ -23,7 +24,7 @@ public class UserService {
     private RoleRepo roleRepo;
 
 
-    public Boolean login(UserCreationRequest userRequest) {
+    public Boolean login(UserLoginRequest userRequest) {
         if(userRepo.existsByUsername(userRequest.getUserName())) {
             User user = new User(userRepo.findByUsername(userRequest.getUserName()));
             if(userRequest.getPassword().equals(user.getPassword())) {

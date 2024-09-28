@@ -24,6 +24,7 @@ public class FoodService {
         Food food = new Food();
         food.setName(foodreq.getName());
         food.setCost(foodreq.getCost());
+        food.setImageUrl(foodreq.getImageUrl());
         return foodRepo.save(food);
     }
 

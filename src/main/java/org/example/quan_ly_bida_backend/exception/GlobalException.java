@@ -14,7 +14,7 @@ public class GlobalException {
     @ExceptionHandler(SQLIntegrityConstraintViolationException.class)
     ResponseEntity<ApiResponse> handleSQLIntegrityConstraintViolationException(SQLIntegrityConstraintViolationException ex) {
         ApiResponse apiResponse = new ApiResponse();
-        apiResponse.setMsg("duplicate data");
+        apiResponse.setMsg(ex.getMessage());
 
         return ResponseEntity.badRequest().body(apiResponse);
     }

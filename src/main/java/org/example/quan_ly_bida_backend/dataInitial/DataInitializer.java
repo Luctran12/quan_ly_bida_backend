@@ -7,6 +7,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class DataInitializer implements CommandLineRunner {
@@ -46,9 +50,20 @@ public class DataInitializer implements CommandLineRunner {
         food.setName("Mỳ gói");
         foodRepo.save(food);
 
-        food.setName("trà đá");
-        food.setCost(5000L);
-        foodRepo.save(food);
+        Food food1 = new Food();
+        food1.setName("trà đá");
+        food1.setCost(5000L);
+        foodRepo.save(food1);
+
+        Food food2 = new Food();
+        food2.setName("trà đường");
+        food2.setCost(15000L);
+        foodRepo.save(food2);
+
+        Food food3 = new Food();
+        food3.setName("trà đá");
+        food3.setCost(5000L);
+        foodRepo.save(food3);
 
         BilliardTable b = new BilliardTable();
         b.setCostPerHour(20000L);
@@ -68,14 +83,14 @@ public class DataInitializer implements CommandLineRunner {
         order.setTotalCost(order.calculateTotalCost());
         //orderRepo.save(order);
 
-
         Status status = new Status();
         status.setOrder(order);
         status.setBilliardTable(b);
-        status.setStartTime(new Date(10000));
-        status.setEndTime(new Date(20002));
-        status.setTotalTime(new Date(10002));
+        status.setStartTime(LocalTime.of(14,0));
+        status.setEndTime(LocalTime.of(16,0));
+        status.setTotalTime(LocalTime.of(2,0));
         status.setTotalCost(status.getOrder().getTotalCost()+status.getBilliardTable().getCostPerHour() * 0.5);
+        status.setDate(LocalDate.now());
         statusRepo.save(status);
     }
 }

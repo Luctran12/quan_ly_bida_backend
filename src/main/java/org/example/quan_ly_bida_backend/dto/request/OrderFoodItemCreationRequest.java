@@ -11,11 +11,13 @@ import org.example.quan_ly_bida_backend.model.Order;
 @Data
 public class OrderFoodItemCreationRequest {
 
-    private Food food;
+    private int foodId;
 
 
     private int quantity;
 
 
-    private BilliardTable table;
+    private int tableId;
+
+    private Long orderId;
 }
