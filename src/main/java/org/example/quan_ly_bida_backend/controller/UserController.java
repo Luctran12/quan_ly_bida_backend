@@ -19,12 +19,16 @@ public class UserController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ApiResponse<String> login(@RequestBody @Valid UserLoginRequest user) {
-        ApiResponse<String> response = new ApiResponse();
-        if (userService.login(user)) {
+    public ApiResponse<User> login(@RequestBody @Valid UserLoginRequest user) {
+        ApiResponse<User> response = new ApiResponse();
+        try {
+            response.setResult(userService.login(user));
             response.setCode(200);
             response.setMsg("login successfully");
             return response;
+        }catch(Exception e)
+        {
+            response.setMsg("login failed: "+e.getMessage());
         }
         response.setMsg("login failed, userName or password is incorrect");
         return response;

@@ -24,14 +24,14 @@ public class UserService {
     private RoleRepo roleRepo;
 
 
-    public Boolean login(UserLoginRequest userRequest) {
+    public User login(UserLoginRequest userRequest) {
         if(userRepo.existsByUsername(userRequest.getUserName())) {
             User user = new User(userRepo.findByUsername(userRequest.getUserName()));
             if(userRequest.getPassword().equals(user.getPassword())) {
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     public User createUser(UserCreationRequest userRequest) throws SQLIntegrityConstraintViolationException {
