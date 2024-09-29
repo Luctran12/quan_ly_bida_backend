@@ -25,15 +25,15 @@ public class Status {
     @JoinColumn(name = "billiard_table_id")
     private BilliardTable billiardTable;
 
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime startTime;
 
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime endTime;
 
-    @Temporal(TemporalType.TIME)
+    //@Temporal(TemporalType.TIME)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "HH:mm:ss")
     private LocalTime totalTime;
 
@@ -42,7 +42,7 @@ public class Status {
 
     @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "order_id", referencedColumnName = "id") // Foreign key column in Status referencing Order
-    @JsonIgnore
+
     private Order order;
 
     @Column(name = "total")

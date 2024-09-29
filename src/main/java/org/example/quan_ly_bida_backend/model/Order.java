@@ -22,11 +22,11 @@ public class Order {
 //    private Status status;
 
     @OneToOne(mappedBy = "order") // This indicates the relationship is managed by the 'order' field in Status
-
+    @JsonIgnore
     private Status status;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
-    @JsonIgnore
+
     private Set<OrderFoodItem> orderFoodItems = new HashSet<>();
 
     @Column(name = "total_cost")

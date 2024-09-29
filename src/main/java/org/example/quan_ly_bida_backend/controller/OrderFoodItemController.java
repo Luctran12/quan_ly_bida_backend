@@ -28,8 +28,12 @@ public class OrderFoodItemController {
     @PostMapping("/create")
     public ApiResponse<OrderFoodItem> create(@RequestBody OrderFoodItemCreationRequest orderFoodItem) {
         ApiResponse<OrderFoodItem>  response = new ApiResponse<>();
-        response.setResult(orderFoodItemService.createOrderFoodItem(orderFoodItem));
-        response.setMsg("create order food item success");
+        try {
+            response.setResult(orderFoodItemService.createOrderFoodItem(orderFoodItem));
+            response.setMsg("create order food item success");
+        }catch (Exception e) {
+            response.setMsg("create order food item failed");
+        }
         return response;
     }
 

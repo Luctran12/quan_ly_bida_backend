@@ -28,7 +28,8 @@ public class OrderFoodItemService {
     @Autowired
     private OrderRepo orderRepo;
 
-
+    @Autowired
+    OrderService orderService;
 
     public List<OrderFoodItem> findByTableId(int tableId) {
      return orderFoodItemRepo.findByTableId(tableId);
@@ -81,6 +82,10 @@ public class OrderFoodItemService {
         orderFoodItem.setQuantity(orderFoodItemRequest.getQuantity());
         orderFoodItem.setTable(table);
         orderFoodItem.setOrder(order);
+
+        //save totalcost for Order
+        orderService.orderTotalCost(order.getId());
+
         // Lưu OrderFoodItem
         orderFoodItemRepo.save(orderFoodItem);
 

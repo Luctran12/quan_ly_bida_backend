@@ -46,23 +46,27 @@ public class DataInitializer implements CommandLineRunner {
         roleRepo.save(userRole);
 
         Food food = new Food();
-        food.setCost(12000L);
-        food.setName("Mỳ gói");
+        food.setCost(10000L);
+        food.setName("Kem");
+        food.setImageUrl("../../assets/Food/kem.png");
         foodRepo.save(food);
 
+
         Food food1 = new Food();
-        food1.setName("trà đá");
-        food1.setCost(5000L);
+        food1.setName("Mì tôm");
+        food1.setCost(13000L);
+        food.setImageUrl("../../assets/Food/mitom.png");
         foodRepo.save(food1);
 
         Food food2 = new Food();
-        food2.setName("trà đường");
-        food2.setCost(15000L);
+        food2.setName("Nui xào");
+        food2.setCost(30000L);
+        food.setImageUrl("../../assets/Food/nui.png");
         foodRepo.save(food2);
 
         Food food3 = new Food();
-        food3.setName("trà đá");
-        food3.setCost(5000L);
+        food3.setName("Sting");
+        food3.setCost(15000L);
         foodRepo.save(food3);
 
         BilliardTable b = new BilliardTable();

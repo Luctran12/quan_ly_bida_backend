@@ -31,6 +31,9 @@ public class StatusService {
     @Autowired
     BilliardTableRepo billiardTableRepo;
 
+    @Autowired
+    OrderService orderService;
+
     // Retrieve all statuses
     public List<Status> getAllStatuses() {
         return statusRepository.findAll();
@@ -57,9 +60,16 @@ public class StatusService {
 //        order.setTotalCost(statusCreationRequest.getOrder().getTotalCost());
 //        status.setOrder(orderRepository.save(order));
 
-        status.setOrder(orderRepository.findById(statusCreationRequest.getOrderId()).get());
+        //re calculate totalcost for oder
+        Order order = orderRepository.findById(statusCreationRequest.getOrderId()).get();
+
+        orderService.orderTotalCost(order.getId());
+
+        status.setOrder(order);
         System.out.println("Status: setOrder complete");
-        status.setTotalCost(calculateTotalCost(status));
+
+        Double total = calculateTotalCost(status);
+        status.setTotalCost(total);
         status.setDate(statusCreationRequest.getDate());
         System.out.println("complete");
         statusRepository.save(status);
@@ -73,7 +83,7 @@ public class StatusService {
         statusRepository.deleteById(id);
     }
 
-    // Calculate total cost based on startTime, endTime, and order
+
     public Double calculateTotalCost(Status status) {
         LocalTime startTime = status.getStartTime();
         LocalTime endTime = status.getEndTime();
@@ -83,12 +93,13 @@ public class StatusService {
         double durationInHours = duration.toMinutes() / 60.0; // Chuyển đổi phút thành giờ
 
         // Chi phí chơi billiard theo giờ
-        double billiardsCostPerHour = 10.0;
+        double billiardsCostPerHour = status.getBilliardTable().getCostPerHour();
         double totalCost = durationInHours * billiardsCostPerHour;
 
         // Tính thêm chi phí order nếu có
         if (status.getOrder() != null) {
-            totalCost += status.getOrder().getTotalCost(); // Giả định rằng Order có phương thức getTotalCost()
+           // totalCost += status.getOrder().getTotalCost(); // Giả định rằng Order có phương thức getTotalCost()
+            totalCost += status.getOrder().calculateTotalCost();
         }
 
         // Thiết lập tổng chi phí cho Status
