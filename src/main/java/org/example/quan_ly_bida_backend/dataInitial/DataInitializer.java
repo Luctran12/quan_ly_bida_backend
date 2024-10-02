@@ -55,7 +55,6 @@ public class DataInitializer implements CommandLineRunner {
         Food food1 = new Food();
         food1.setName("Mì tôm");
         food1.setCost(13000L);
-        food.setImageUrl("../../assets/Food/mitom.png");
         foodRepo.save(food1);
 
         Food food2 = new Food();
@@ -69,10 +68,75 @@ public class DataInitializer implements CommandLineRunner {
         food3.setCost(15000L);
         foodRepo.save(food3);
 
+        Food food4 = new Food();
+        food4.setName("Pepsi");
+        food4.setCost(15000L);
+        foodRepo.save(food4);
+
+        Food food5 = new Food();
+        food5.setName("Cà Phê");
+        food5.setCost(15000L);
+        foodRepo.save(food5);
+
+        Food food6 = new Food();
+        food6.setName("Cà phê sữa");
+        food6.setCost(20000L);
+        foodRepo.save(food6);
+
+        Food food7 = new Food();
+        food7.setName("Trà Đào");
+        food7.setCost(20000L);
+        foodRepo.save(food7);
+
+        Food food8 = new Food();
+        food8.setName("Trà Đá");
+        food8.setCost(5000L);
+        foodRepo.save(food8);
+
+        Food food9 = new Food();
+        food9.setName("Sting");
+        food9.setCost(15000L);
+        foodRepo.save(food9);
+
         BilliardTable b = new BilliardTable();
-        b.setCostPerHour(20000L);
+        b.setCostPerHour(39000L);
         b.setType("Aplus");
         billiardTableRepo.save(b);
+
+        BilliardTable b1 = new BilliardTable();
+        b1.setCostPerHour(39000L);
+        b1.setType("Aplus2");
+        billiardTableRepo.save(b1);
+
+        BilliardTable b2 = new BilliardTable();
+        b2.setCostPerHour(39000L);
+        b2.setType("Aplus3");
+        billiardTableRepo.save(b2);
+
+        BilliardTable b3 = new BilliardTable();
+        b3.setCostPerHour(39000L);
+        b3.setType("Aplus4");
+        billiardTableRepo.save(b3);
+
+        BilliardTable b4 = new BilliardTable();
+        b4.setCostPerHour(49000L);
+        b4.setType("MrSung2");
+        billiardTableRepo.save(b4);
+
+        BilliardTable b5 = new BilliardTable();
+        b5.setCostPerHour(39000L);
+        b5.setType("MrSung3");
+        billiardTableRepo.save(b5);
+
+        BilliardTable b6 = new BilliardTable();
+        b6.setCostPerHour(79000L);
+        b6.setType("Chinese Pool");
+        billiardTableRepo.save(b6);
+
+        BilliardTable b7 = new BilliardTable();
+        b7.setCostPerHour(79000L);
+        b7.setType("Chinese Pools");
+        billiardTableRepo.save(b7);
 
         OrderFoodItem orderFoodItem = new OrderFoodItem();
         orderFoodItem.setFood(food);
