@@ -1,5 +1,6 @@
 package org.example.quan_ly_bida_backend.service;
 
+import org.example.quan_ly_bida_backend.dto.request.DateRequest;
 import org.example.quan_ly_bida_backend.dto.request.StatusCreationRequest;
 import org.example.quan_ly_bida_backend.model.Order;
 import org.example.quan_ly_bida_backend.model.OrderFoodItem;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import javax.sound.midi.SysexMessage;
 import java.time.Duration;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.List;
@@ -34,16 +36,15 @@ public class StatusService {
     @Autowired
     OrderService orderService;
 
-    // Retrieve all statuses
+
     public List<Status> getAllStatuses() {
         return statusRepository.findAll();
     }
 
-    // Retrieve a status by ID
+
     public Status getStatusById(int id) {
         return statusRepository.findById(id);
     }
-
 
     public Status saveStatus(StatusCreationRequest statusCreationRequest) {
         Status status = new Status();
@@ -78,11 +79,14 @@ public class StatusService {
     }
 
 
-    // Delete a status by ID
     public void deleteStatus(int id) {
         statusRepository.deleteById(id);
     }
 
+    public List<Status> getByDate(DateRequest datereq) {
+        LocalDate date = LocalDate.of(datereq.getYear(),datereq.getMonth(),datereq.getDay());
+        return statusRepository.findByDate(date);
+    }
 
     public Double calculateTotalCost(Status status) {
         LocalTime startTime = status.getStartTime();
@@ -98,14 +102,8 @@ public class StatusService {
 
         // Tính thêm chi phí order nếu có
         if (status.getOrder() != null) {
-           // totalCost += status.getOrder().getTotalCost(); // Giả định rằng Order có phương thức getTotalCost()
             totalCost += status.getOrder().calculateTotalCost();
         }
-
-        // Thiết lập tổng chi phí cho Status
-
-
-        // Lưu Status và trả về
         return totalCost;
     }
 

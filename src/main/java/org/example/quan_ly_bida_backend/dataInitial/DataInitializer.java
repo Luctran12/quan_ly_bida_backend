@@ -1,5 +1,6 @@
 package org.example.quan_ly_bida_backend.dataInitial;
 
+import ch.qos.logback.core.joran.spi.ConsoleTarget;
 import org.example.quan_ly_bida_backend.model.*;
 import org.example.quan_ly_bida_backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -160,5 +161,16 @@ public class DataInitializer implements CommandLineRunner {
         status.setTotalCost(status.getOrder().getTotalCost()+status.getBilliardTable().getCostPerHour() * 0.5);
         status.setDate(LocalDate.now());
         statusRepo.save(status);
+
+        System.out.println("===================================");
+        LocalDate date = LocalDate.of(2024,10,4);
+        System.out.println(date);
+        System.out.println(statusRepo.findByDate(date).size());
+        //System.out.println(statusRepo.findByDate("2024-10-02").toArray().length);
+
+        System.out.println("findAll: ");
+        for(Status s : statusRepo.findAll()) {
+            System.out.println(s.toString());
+        }
     }
 }

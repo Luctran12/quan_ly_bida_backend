@@ -1,0 +1,14 @@
+server:
+  port: 8081
+spring:
+  datasource:
+
+    url: "jdbc:mysql://root:GkjeQQklETjEWmQuVuPsNGUrCQhmiCrZ@autorack.proxy.rlwy.net:28464/railway"
+    username: root
+    password: GkjeQQklETjEWmQuVuPsNGUrCQhmiCrZ
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+
