@@ -2,6 +2,7 @@ package org.example.quan_ly_bida_backend.controller;
 
 import org.example.quan_ly_bida_backend.dto.request.OrderCreationRequest;
 import org.example.quan_ly_bida_backend.dto.request.response.ApiResponse;
+import org.example.quan_ly_bida_backend.model.Order;
 import org.example.quan_ly_bida_backend.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,6 +35,14 @@ public class OrderController {
         }catch (Exception e) {
             response.setMsg("Get Total Cost Failed");
         }
+        return response;
+    }
+
+    @GetMapping("/findById/{id}")
+    public ApiResponse<Order> findById(@PathVariable Long id) {
+        ApiResponse<Order> response = new ApiResponse<>();
+        response.setResult(orderService.findOrderById(id));
+        response.setMsg("Find Order Success");
         return response;
     }
 }

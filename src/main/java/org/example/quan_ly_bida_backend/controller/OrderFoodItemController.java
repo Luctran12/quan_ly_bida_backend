@@ -60,4 +60,12 @@ public class OrderFoodItemController {
         }
         return response;
     }
+
+    @GetMapping("/findById/{id}")
+    public ApiResponse<OrderFoodItem> findById(@PathVariable int id) {
+        ApiResponse<OrderFoodItem>  response = new ApiResponse<>();
+        response.setResult(orderFoodItemService.findById(id));
+        response.setMsg("find by table id success");
+        return response;
+    }
 }

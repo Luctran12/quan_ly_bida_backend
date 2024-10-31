@@ -103,4 +103,8 @@ public class OrderFoodItemService {
         return orderFoodItem;
     }
 
+    public OrderFoodItem findById(int id){
+        return orderFoodItemRepo.findById(id).get();
+    }
+
 }

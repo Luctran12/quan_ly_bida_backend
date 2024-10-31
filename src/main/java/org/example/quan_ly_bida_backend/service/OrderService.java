@@ -34,6 +34,10 @@ public class OrderService {
         return order;
     }
 
+    public Order findOrderById(Long id) {
+        return orderRepo.findById(id).get();
+    }
+
 //    public Order addOrderFoodItem(int orderFoodItemId, Long orderId) {
 //        Order order = orderRepo.findById(orderId).get();
 //
