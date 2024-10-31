@@ -14,7 +14,7 @@ public interface StatusRepo extends JpaRepository<Status, Integer> {
 
     public List<Status> findByDate(LocalDate date);
 
-
+    public Status findByOrderId(int orderId);
 
 //    @Query(value = "SELECT * FROM status WHERE date = '?1'", nativeQuery = true)
 //    List<Status> findByDate(String date);

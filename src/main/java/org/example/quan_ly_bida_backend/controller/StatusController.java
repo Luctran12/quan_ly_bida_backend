@@ -53,4 +53,13 @@ public class StatusController {
         }
         return respone;
     }
+
+    @GetMapping("/findByOrderId/{id}")
+    public ApiResponse<Status> findByOrderId(@PathVariable int id) {
+        ApiResponse<Status> respone = new ApiResponse<>();
+        respone.setResult(statusService.getByOrderId(id));
+        respone.setMsg("findByOrderId success");
+        return respone;
+    }
+
 }

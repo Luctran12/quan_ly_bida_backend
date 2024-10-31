@@ -107,4 +107,8 @@ public class StatusService {
         return totalCost;
     }
 
+    public Status getByOrderId(int orderId) {
+        return statusRepository.findByOrderId(orderId);
+    }
+
 }

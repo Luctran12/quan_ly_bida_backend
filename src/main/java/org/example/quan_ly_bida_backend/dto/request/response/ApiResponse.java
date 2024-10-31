@@ -10,6 +10,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ApiResponse<T> {
+
     private int code;
     private String msg;
     private T result;
