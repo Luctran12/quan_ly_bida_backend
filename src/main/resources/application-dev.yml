@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
 
-    url: "jdbc:mysql://root:ZZajIGCBoMZDyqWGEhlThWaFWqKLXcjs@junction.proxy.rlwy.net:59458/railway"
+    url: "jdbc:mysql://root:nBrFIyrYUDENzrhEsXWUeUINLtEWpDxJ@autorack.proxy.rlwy.net:43783/railway"
     username: root
-    password: ZZajIGCBoMZDyqWGEhlThWaFWqKLXcjs
+    password: nBrFIyrYUDENzrhEsXWUeUINLtEWpDxJ
   jpa:
     hibernate:
       ddl-auto: create
