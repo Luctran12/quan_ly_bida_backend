@@ -100,17 +100,17 @@ public class DataInitializer implements CommandLineRunner {
         foodRepo.save(food9);
 
         BilliardTable b = new BilliardTable();
-        b.setCostPerHour(39000L);
+        b.setCostPerHour(390000L);
         b.setType("Aplus");
         billiardTableRepo.save(b);
 
         BilliardTable b1 = new BilliardTable();
-        b1.setCostPerHour(39000L);
+        b1.setCostPerHour(390000L);
         b1.setType("Aplus2");
         billiardTableRepo.save(b1);
 
         BilliardTable b2 = new BilliardTable();
-        b2.setCostPerHour(39000L);
+        b2.setCostPerHour(390000L);
         b2.setType("Aplus3");
         billiardTableRepo.save(b2);
 
